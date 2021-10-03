@@ -41,7 +41,7 @@ class Radio:
 
 # Car
 
-carRadio = Radio('Simbada', "FM", "DC")
+carRadio = Radio('Simbada', 'FM', 'DC')
 carRadio.turnOn()
 carRadio.scanChannel()
 carRadio.setChannel(carRadio.channels[4])
@@ -52,7 +52,7 @@ carRadio.printData()
 
 # Home
 
-homeRadio = Radio('SHARP', "AM/FM", "AC")
+homeRadio = Radio('SHARP', 'AM/FM', 'AC')
 
 homeRadio.turnOn()
 homeRadio.scanChannel()
