@@ -11,9 +11,18 @@ class Radio:
         self.wave = wave
         self.source = source
 
+    def __getActiveIndex(self):
+        currentActive = -1
+        try:
+            currentActive  = self.channels.index(self.activeChannel)
+        except:
+            currentActive = -1
+        return  currentActive
+
     def turnOn(self):
         self.on = True
         self.scanChannel()
+        self.activeChannel = None
 
     def turnOff(self):
         self.on = False
@@ -28,6 +37,18 @@ class Radio:
 
     def setChannel(self, newChannel):
         self.activeChannel = newChannel
+
+    def setChannelUp(self):
+        if self.__getActiveIndex() == len(self.channels) - 1:
+            self.activeChannel = 0
+        else:
+            self.activeChannel = self.__getActiveIndex() + 1
+
+    def setChannelDown(self):
+        if self.__getActiveIndex() == 0:
+            self.activeChannel = len(self.channels) - 1
+        else:
+            self.activeChannel = self.__getActiveIndex() - 1
 
     def printData(self):
         print("------------------------------")
@@ -44,6 +65,7 @@ class Radio:
 carRadio = Radio('Simbada', 'FM', 'DC')
 carRadio.turnOn()
 carRadio.scanChannel()
+carRadio.setChannelUp()
 carRadio.setChannel(carRadio.channels[4])
 carRadio.printData()
 
@@ -57,6 +79,7 @@ homeRadio = Radio('SHARP', 'AM/FM', 'AC')
 homeRadio.turnOn()
 homeRadio.scanChannel()
 homeRadio.setChannel(homeRadio.channels[4])
+carRadio.setChannelDown()
 homeRadio.printData()
 
 homeRadio.turnOff()
