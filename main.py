@@ -6,9 +6,8 @@ class Radio:
     channels = []
     on=False
 
-    def __init__(self, brand, wave, source):
+    def __init__(self, brand, source):
         self.brand = brand
-        self.wave = wave
         self.source = source
 
     def __getActiveIndex(self):
@@ -61,8 +60,32 @@ class Radio:
         print("------------------------------\n")
 
 # Car
+class AMRadio(Radio):
+    def __init__(self, brand, source):
+        super(AMRadio, self).__init__(brand, source)
+        self.wave = 'AM'
 
-carRadio = Radio('Simbada', 'FM', 'DC')
+    def scanChannel(self):
+        newChannels = []
+        for i in range(530, 1700):
+            newChannels.append(i)
+        self.channels = newChannels
+
+
+class FMRadio(Radio):
+    def __init__(self, brand, source):
+        super(FMRadio, self).__init__(brand, source)
+        self.wave = 'FM'
+    def scanChannel(self):
+        newChannels = []
+        for i in range(87, 108):
+            newChannels.append(i)
+        self.channels = newChannels
+
+
+
+
+carRadio = FMRadio('Simbada', 'DC')
 carRadio.turnOn()
 carRadio.scanChannel()
 carRadio.setChannelUp()
@@ -74,8 +97,7 @@ carRadio.printData()
 
 # Home
 
-homeRadio = Radio('SHARP', 'AM/FM', 'AC')
-
+homeRadio = AMRadio('SHARP', 'AC')
 homeRadio.turnOn()
 homeRadio.scanChannel()
 homeRadio.setChannel(homeRadio.channels[4])
