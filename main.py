@@ -49,6 +49,10 @@ class Radio:
         else:
             self.activeChannel = self.__getActiveIndex() - 1
 
+    def _cleanChannel(self):
+        self.activeChannel = None
+        self.channels = []
+
     def printData(self):
         print("------------------------------")
         print(f'Brand : {self.brand}')
@@ -64,6 +68,7 @@ class AMRadio(Radio):
     def __init__(self, brand, source):
         super(AMRadio, self).__init__(brand, source)
         self.wave = 'AM'
+        self._cleanChannel()
 
     def scanChannel(self):
         newChannels = []
@@ -76,6 +81,8 @@ class FMRadio(Radio):
     def __init__(self, brand, source):
         super(FMRadio, self).__init__(brand, source)
         self.wave = 'FM'
+        self._cleanChannel()
+
     def scanChannel(self):
         newChannels = []
         for i in range(87, 108):
