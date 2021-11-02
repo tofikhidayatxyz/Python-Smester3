@@ -53,6 +53,9 @@ class Radio:
         self.activeChannel = None
         self.channels = []
 
+    def __add__(self, other):
+        return len(self.channels) + len(other.channels)
+
     def printData(self):
         print("------------------------------")
         print(f'Brand : {self.brand}')
@@ -98,9 +101,9 @@ carRadio.scanChannel()
 carRadio.setChannelUp()
 carRadio.setChannel(carRadio.channels[4])
 carRadio.printData()
-
-carRadio.turnOff()
-carRadio.printData()
+#
+# carRadio.turnOff()
+# carRadio.printData()
 
 # Home
 
@@ -111,5 +114,8 @@ homeRadio.setChannel(homeRadio.channels[4])
 carRadio.setChannelDown()
 homeRadio.printData()
 
-homeRadio.turnOff()
-homeRadio.printData()
+# homeRadio.turnOff()
+# homeRadio.printData()
+ # magic method
+
+print(f"Total ada {carRadio + homeRadio} Channels")
