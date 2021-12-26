@@ -1,13 +1,10 @@
-from parent_a import parent_a
-from parent_b import parent_b
+class Car:
+    isCarRun = False
+    @staticmethod
+    def run():
+        if(Car.isCarRun):
+            print('CAR IN RUNING')
+        else:
+            print('CAR IN NOT RUN')
 
-
-class main(parent_a, parent_b):
-    pass
-
-
-mainIn = main()
-
-mainIn.doSomething()
-mainIn.gotoSchool()
-mainIn.gotoMarket()
+Car.run()
