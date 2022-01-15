@@ -1,4 +1,5 @@
-from cProfile import run
+
+import sys
 
 
 class Car:
@@ -15,6 +16,9 @@ class Lamborgini(Car):
         super(Lamborgini).__init__()
     @staticmethod
     def gas():
-        Lamborgini.run()
+        try :
+            Lamborgini.runAll()
+        except:
+            print('OOPSSSSSSSS ERROR \n ', sys.exc_info)
 
 Lamborgini.gas()
