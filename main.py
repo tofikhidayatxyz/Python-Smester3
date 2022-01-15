@@ -1,3 +1,6 @@
+from cProfile import run
+
+
 class Car:
     isCarRun = False
     @staticmethod
@@ -7,4 +10,11 @@ class Car:
         else:
             print('CAR IN NOT RUN')
 
-Car.run()
+class Lamborgini(Car):
+    def __init__(self):
+        super(Lamborgini).__init__()
+    @staticmethod
+    def gas():
+        Lamborgini.run()
+
+Lamborgini.gas()
