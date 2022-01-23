@@ -49,15 +49,14 @@ class Tv:
     def __del__(self):
         print(F'This {self.brand}  object has been deleted')
 
+# Static method
+    @staticmethod
+    def createTv():
+        return Tv('LG', '21 inch')
 
-class SmartTv(Tv):
-    applications = ['youtube', 'playstore', 'netflix', 'video.com']
-    
-    def __init__(self, brand, size):
-        super(SmartTv).__init__(brand, size)
 
 # prints
-tvRuangTamu = Tv('LG', '21 inch')
+tvRuangTamu = Tv.createTv()
 print(tvRuangTamu.channels)
 tvRuangTamu.setChannel(1)
 tvRuangTamu.turnOn()
